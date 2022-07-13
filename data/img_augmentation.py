@@ -92,6 +92,6 @@ if __name__ == "__main__":
             images_aug = aug.seq.augment_images([img for i in range(augment_num)])
 
             for num, aug_img in enumerate(images_aug):
-                cv2.imwrite(f'{save_path}+{code}_{num+1}.jpg', aug_img)
+                cv2.imwrite(f'{save_path}{code}_{num+1}.jpg', aug_img)
         except:
             pass
