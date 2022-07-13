@@ -15,6 +15,18 @@ $ python download_url_to_img.py
 $ python grabcut.py
 ```
 
+2.1 이미지 전경 전처리 custom 기능 동작을 원할 경우
+
+- custom할 알약 품목명 리스트를 입력 후 실행
+- 마우스 왼쪽 버튼 드래그: 전경 복구
+- 마우스 오른쪽 버튼 드래그: 전경 제거
+- Enter: 전처리 후 이미지 보기
+- q : quit 후 저장
+
+```python
+$ python grabcut_custom.py
+```
+
 3. 전처리 된 이미지 augmentation
 
 ```python
