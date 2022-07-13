@@ -40,7 +40,7 @@ class Img_aug() :
                         iaa.Sharpen(alpha=(0, 1.0), lightness=(0.75, 1.5)), 
                         iaa.Emboss(alpha=(0, 1.0), strength=(0, 2.0)), 
                       
-                        iaa.SimplexNoiseAlpha(iaa.OneOf([
+                        iaa.BlendAlphaSimplexNoise(iaa.OneOf([
                             iaa.EdgeDetect(alpha=(0.5, 1.0)),
                             iaa.DirectedEdgeDetect(alpha=(0.5, 1.0), direction=(0.0, 1.0)),
                         ])),
@@ -55,10 +55,10 @@ class Img_aug() :
                         
                         iaa.OneOf([
                             iaa.Multiply((0.5, 1.5), per_channel=0.5),
-                            iaa.FrequencyNoiseAlpha(
+                            iaa.BlendAlphaFrequencyNoise(
                                 exponent=(-4, 0),
-                                first=iaa.Multiply((0.5, 1.5), per_channel=True),
-                                second=iaa.ContrastNormalization((0.5, 2.0))
+                                foreground=iaa.Multiply((0.5, 1.5), per_channel=True),
+                                background=iaa.ContrastNormalization((0.5, 2.0))
                             )
                         ]),
                         iaa.ContrastNormalization((0.5, 2.0), per_channel=0.5), 
