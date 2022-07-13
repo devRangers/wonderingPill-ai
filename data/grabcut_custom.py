@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pandas as pd
 
-def grabcut(preprocess_path):
+def grabcut_custom(preprocess_path):
     src = cv2.imread(f'./img/{preprocess_path}.jpg')
 
     mask = np.zeros(src.shape[:2], np.uint8)  # 마스크
@@ -43,30 +43,26 @@ def grabcut(preprocess_path):
 
     while True:
         key = cv2.waitKey()
-        if key == 13:  # ENTER
-            # 사용자가 지정한 전경/배경 정보를 활용하여 분할
-            cv2.grabCut(src, mask, rc, bgdModel, fgdModel, 1, cv2.GC_INIT_WITH_MASK)
+        if key == 13:
+            cv2.grabCut(src, mask, rc, bgdModel, fgdModel, 1, cv2.GC_INIT_WITH_MASK) # 마스크 초기화
             mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
             dst = src * mask2[:, :, np.newaxis]
             cv2.imshow('dst', dst)
             cv2.imwrite(f'./img/{preprocess_path}_0.jpg', dst)
-            cv2.destroyAllWindows()
+
+        elif key == ord('q'):
             break
+
+    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("./pills_data.csv")
-    pill_code = pd.DataFrame(data['품목일련번호'])
+    custom_list = [200809959]
 
-    for i,row in pill_code.iterrows():
-        # 1차적으로 100개
-        if i == 100:
-            break
-
+    for code in custom_list:
         try:
-            code = str(row['품목일련번호'])
             preprocess_path = f'{code}/{code}'
 
-            grabcut(preprocess_path)
+            grabcut_custom(preprocess_path)
         except:
             pass
