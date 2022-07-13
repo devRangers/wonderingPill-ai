@@ -57,7 +57,7 @@ def grabcut_custom(preprocess_path):
 
 
 if __name__ == "__main__":
-    custom_list = [200809959]
+    custom_list = [200902147, 200903482]
 
     for code in custom_list:
         try:
