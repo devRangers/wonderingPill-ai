@@ -30,5 +30,5 @@ $ python grabcut_custom.py
 4. 전처리 된 이미지 augmentation
 
 ```python
-$ python
+$ python img_augmentation.py
 ```
