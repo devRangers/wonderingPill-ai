@@ -1,11 +1,10 @@
-import numpy as np
 import pandas as pd
 import os
 import re
+import pickle
 
-IMAGE_DIR = "../data/img"
 
-def make_pill_df(image_dir = IMAGE_DIR):
+def make_pill_df(image_dir):
     data = pd.read_csv("../data/pills_data.csv")
     paths, labels = [], []
 
@@ -39,5 +38,13 @@ def make_pill_label(data_df):
 
 
 if __name__ == "__main__":
-    pass
+    IMAGE_DIR = "../data/img"
+
+    data_df = make_pill_df(IMAGE_DIR)
+    data_df.to_csv("pills_data.preprocess.csv", index=False, encoding="utf-8")
+
+    pill_dict = make_pill_df(data_df)
+    with open("./label/pill_label.pkl", "wb") as tf:
+        pickle.dump(pill_dict, tf)
+
 
