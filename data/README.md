@@ -32,3 +32,12 @@ $ python grabcut_custom.py
 ```python
 $ python img_augmentation.py
 ```
+
+5. 최종 알약 데이터 셋 & label 파일 생성
+
+- pills_data.preprocess.csv 생성
+- data/label/pill_label.pkl 생성
+
+```python
+$ python make_pill_df.py
+```
