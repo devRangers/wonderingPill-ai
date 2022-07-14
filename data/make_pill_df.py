@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import os
 import re
@@ -15,7 +16,7 @@ def make_pill_df(image_dir):
                 paths.append(file_path)
 
                 start_pos  = file_path.find("\\")
-                end_pos = file_path.rfund("/")
+                end_pos = file_path.rfind("/")
                 pill_code = file_path[start_pos+1:end_pos]
 
                 pill_name = data[data["품목일련번호"] == int(pill_code)]["품목명"]
@@ -23,6 +24,10 @@ def make_pill_df(image_dir):
                 labels.append(pill_name)
     
     data_df = pd.DataFrame({'path':paths, 'label':labels})
+
+    data_label = pd.get_dummies(data_df['label']).values
+    data_df['label_class'] = np.argmax(data_label, axis=1)
+
     return data_df
 
 
@@ -41,9 +46,9 @@ if __name__ == "__main__":
     IMAGE_DIR = "../data/img"
 
     data_df = make_pill_df(IMAGE_DIR)
-    data_df.to_csv("pills_data.preprocess.csv", index=False, encoding="utf-8")
+    data_df.to_csv("pills_data.preprocess.csv", index=False, encoding="euc-kr")
 
-    pill_dict = make_pill_df(data_df)
+    pill_dict = make_pill_label(data_df)
     with open("./label/pill_label.pkl", "wb") as tf:
         pickle.dump(pill_dict, tf)
 
