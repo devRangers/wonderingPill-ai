@@ -1,4 +1,6 @@
-## 의약품안전나라 의약품 낱알식별 데이터셋
+## 데이터셋 구축
+
+#### 의약품안전나라 의약품 낱알식별 데이터셋
 
 - [pills_data.csv](https://nedrug.mfds.go.kr/pbp/CCBGA01/getItem?totalPages=4&limit=10&page=2&&openDataInfoSeq=11)
 
