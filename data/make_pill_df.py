@@ -5,11 +5,11 @@ import re
 
 IMAGE_DIR = "../data/img"
 
-def make_pill_df(img_dir = IMAGE_DIR):
+def make_pill_df(image_dir = IMAGE_DIR):
     data = pd.read_csv("../data/pills_data.csv")
     paths, labels = [], []
 
-    for dirname, _, filenames in os.walk("../data/img"):
+    for dirname, _, filenames in os.walk(image_dir):
         for filename in filenames:
             if '.jpg' in filename:
                 file_path = dirname + "/" + filename
@@ -25,3 +25,19 @@ def make_pill_df(img_dir = IMAGE_DIR):
     
     data_df = pd.DataFrame({'path':paths, 'label':labels})
     return data_df
+
+
+def make_pill_label(data_df):
+    pill_dict = {}
+
+    label_num = len(data_df['label_class'].value_counts())
+
+    for i in range(label_num):
+        pill_dict[i] = (data_df[data_df['label_class']==i]['label'].iloc[0])
+    
+    return pill_dict
+
+
+if __name__ == "__main__":
+    pass
+
