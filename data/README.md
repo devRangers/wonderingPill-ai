@@ -48,6 +48,7 @@ $ python make_pill_df.py
 
 ## data 폴더 구성
 
+```
 📦data
 ┣ 📂img
 ┃ ┣ 📂200808876
@@ -65,3 +66,4 @@ $ python make_pill_df.py
 ┣ 📜pills_data.csv
 ┣ 📜pills_data.preprocess.csv
 ┗ 📜README.md
+```
