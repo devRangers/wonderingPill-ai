@@ -38,7 +38,7 @@ def make_pill_label(data_df):
 
     for i in range(label_num):
         pill_dict[i] = (data_df[data_df['label_class']==i]['label'].iloc[0])
-    
+
     return pill_dict
 
 
