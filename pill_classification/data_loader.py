@@ -3,12 +3,15 @@ import cv2
 import numpy as np
 import pandas as pd
 import tensorflow
+import re
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import Sequence
 
 
 def get_train_valid_test(df_path, valid_size=0.1, random_state=216):
-    data_df = pd.read_csv(df_path, encoding="euc-kr")
+    data_df = pd.read_csv(df_path, encoding="utf-8")
+    data_df['path'] = data_df['path'].replace('\.+', '.', regex=True) 
+
     data_path = data_df['path'].values
     data_label = pd.get_dummies(data_df['label']).values
 
