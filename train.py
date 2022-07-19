@@ -1,5 +1,6 @@
 from pill_classification.data_loader import get_train_valid_test, DataLoader
 from tensorflow.keras.applications.xception import preprocess_input
+from pill_classification.trainer import Trainer
 import albumentations as A
 from configs import mn_config
 
@@ -34,7 +35,9 @@ def main(config):
                             shuffle=False,
                             pre_func=preprocess_input)
     
-    
+
+    trainer = Trainer(config)
+    model, history = trainer.train(train_loader=train_loader, valid_loader=valid_loader, X_train=X_train, X_valid=X_valid)
     
 
 if __name__ == "__main__":

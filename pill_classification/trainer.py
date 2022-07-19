@@ -12,8 +12,8 @@ class Trainer():
             self.device = tf.test.gpu_device_name()
         else:
             self.device = "/CPU:0"
-    
-    def train(self, model, train_loader, valid_loader, X_train, X_valid):
+
+    def train(self, train_loader, valid_loader, X_train, X_valid):
 
         print("---학습 시작---")
         model = MobileNet(self.config.n_classes)
