@@ -11,6 +11,7 @@ class MobileNet():
         self.input_tensor = Input(shape = self.input_shape)
         self.base_model = MobileNetV2(include_top = False, weights = self.weights, input_tensor = self.input_tensor)
 
+    def forward(self):
         x = self.base_model.output
         x = GlobalAveragePooling2D()(x)
         x = Dense(1024, activation="relu")(x)

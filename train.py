@@ -37,7 +37,7 @@ def main(config):
     
 
     trainer = Trainer(config)
-    model, history = trainer.train(train_loader=train_loader, valid_loader=valid_loader, X_train=X_train, X_valid=X_valid)
+    model = trainer.train(train_loader=train_loader, valid_loader=valid_loader, X_train=X_train, X_valid=X_valid)
     
 
 if __name__ == "__main__":
