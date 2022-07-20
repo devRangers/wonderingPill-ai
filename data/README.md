@@ -44,6 +44,8 @@ $ python img_augmentation.py
 $ python make_pill_df.py
 ```
 
+**변경할 것** : 사용할 데이터프레임이 변경됨 맞춰서 변경할 필요가 있음
+
 ---
 
 ## data 폴더 구성
