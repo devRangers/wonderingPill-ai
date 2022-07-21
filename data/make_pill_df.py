@@ -35,11 +35,19 @@ def make_pill_df(image_dir):
                 back = data[data["품목일련번호"] == int(pill_code)]["표시뒤"].tolist()[0]
                 backs.append(back)
     
-    data_df = pd.DataFrame({'path':paths, 'name':names})
+    data_df = pd.DataFrame({'path':paths, 'code':codes, 'name':names, 'shape':shapes, 'color':colors, 'front':fronts, 'back':backs})
 
-    data_label = pd.get_dummies(data_df['label']).values
-    data_df['label_class'] = np.argmax(data_label, axis=1)
+    data_label = pd.get_dummies(data_df['shape']).values
+    data_df['shape_class'] = np.argmax(data_label, axis=1)
 
+    data_label = pd.get_dummies(data_df['color']).values
+    data_df['color_class'] = np.argmax(data_label, axis=1)
+
+    data_label = pd.get_dummies(data_df['front']).values
+    data_df['front_class'] = np.argmax(data_label, axis=1)
+
+    data_label = pd.get_dummies(data_df['back']).values
+    data_df['back_class'] = np.argmax(data_label, axis=1)
     return data_df
 
 
