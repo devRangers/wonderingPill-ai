@@ -57,10 +57,12 @@ def grabcut_custom(preprocess_path):
 
 
 if __name__ == "__main__":
-    custom_list = [200902147, 200903482]
+    data = pd.read_csv("./pills_data.available_in_api.csv")
+    pill_code = pd.DataFrame(data['품목일련번호'])
 
-    for code in custom_list:
+    for i,row in pill_code.iterrows():
         try:
+            code = str(row['품목일련번호'])
             preprocess_path = f'{code}/{code}'
 
             grabcut_custom(preprocess_path)

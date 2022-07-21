@@ -6,8 +6,8 @@ import pickle
 
 
 def make_pill_df(image_dir):
-    data = pd.read_csv("../data/pills_data.csv")
-    paths, labels = [], []
+    data = pd.read_csv("../data/pills_data.available_in_api.csv")
+    paths, codes, names, shapes, colors, fronts, backs = [], [], [], [], [], [], []
 
     for dirname, _, filenames in os.walk(image_dir):
         for filename in filenames:
@@ -18,12 +18,24 @@ def make_pill_df(image_dir):
                 start_pos  = file_path.find("\\")
                 end_pos = file_path.rfind("/")
                 pill_code = file_path[start_pos+1:end_pos]
+                codes.append(pill_code)
 
                 pill_name = data[data["품목일련번호"] == int(pill_code)]["품목명"]
                 pill_name = re.split('[/,-,(,).:]', str(pill_name))[0][5:].strip().replace('\nName','')
-                labels.append(pill_name)
+                names.append(pill_name)
+
+                shape = data[data["품목일련번호"] == int(pill_code)]["의약품제형"].tolist()[0]
+                shapes.append(shape)
+
+                color = data[data["품목일련번호"] == int(pill_code)]["색상"].tolist()[0]
+                colors.append(color)
+
+                front = data[data["품목일련번호"] == int(pill_code)]["표시앞"].tolist()[0]
+                fronts.append(front)
+                back = data[data["품목일련번호"] == int(pill_code)]["표시뒤"].tolist()[0]
+                backs.append(back)
     
-    data_df = pd.DataFrame({'path':paths, 'label':labels})
+    data_df = pd.DataFrame({'path':paths, 'name':names})
 
     data_label = pd.get_dummies(data_df['label']).values
     data_df['label_class'] = np.argmax(data_label, axis=1)
