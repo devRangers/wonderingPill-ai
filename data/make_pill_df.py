@@ -54,10 +54,10 @@ def make_pill_df(image_dir):
 def make_pill_label(data_df):
     pill_dict = {}
 
-    label_num = len(data_df['label_class'].value_counts())
+    label_num = len(data_df['shape_class'].value_counts())
 
     for i in range(label_num):
-        pill_dict[i] = (data_df[data_df['label_class']==i]['label'].iloc[0])
+        pill_dict[i] = (data_df[data_df['shape_class']==i]['shape'].iloc[0])
 
     return pill_dict
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     IMAGE_DIR = "../data/img"
 
     data_df = make_pill_df(IMAGE_DIR)
-    data_df.to_csv("pills_data.preprocess.csv", index=False, encoding="euc-kr")
+    data_df.to_csv("pills_data.available_in_api.preprocess.csv", index=False, encoding="euc-kr")
 
     pill_dict = make_pill_label(data_df)
     with open("./label/pill_label.pkl", "wb") as tf:
