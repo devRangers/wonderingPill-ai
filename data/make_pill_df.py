@@ -51,7 +51,7 @@ def make_pill_df(image_dir):
     return data_df
 
 
-def make_pill_label(data_df):
+def make_pill_label(data_df): # FIX later
     pill_dict = {}
 
     label_num = len(data_df['shape_class'].value_counts())

@@ -37,7 +37,7 @@ $ python img_augmentation.py
 
 **5. 최종 알약 데이터 셋 & label 파일 생성**
 
-- pills_data.preprocess.csv 생성
+- pills_data.available_in_api.preprocess.csv 생성
 - data/label/pill_label.pkl 생성
 
 ```python
@@ -65,6 +65,8 @@ $ python make_pill_df.py
 ┣ 📜grabcut_custom.py
 ┣ 📜img_augmentation.py
 ┣ 📜make_pill_df.py
+┣ 📜pills_data.available_in_api.csv
+┣ 📜pills_data.available_in_api.preprocess.csv
 ┣ 📜pills_data.csv
 ┣ 📜pills_data.preprocess.csv
 ┗ 📜README.md
