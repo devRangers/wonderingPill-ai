@@ -3,9 +3,9 @@ import urllib.request
 import pandas as pd
 
 def download_image(img_url, pill_name, save_path):
-  result_url = './img/'
-  os.mkdir(result_url + pill_name)
-  urllib.request.urlretrieve(img_url, result_url + save_path + '.jpg')
+    result_url = './img/'
+    os.mkdir(result_url + pill_name)
+    urllib.request.urlretrieve(img_url, result_url + save_path + '.jpg')
 
 if __name__ == "__main__":
     data = pd.read_csv("./pills_data.available_in_api.csv")

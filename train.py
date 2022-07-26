@@ -11,7 +11,7 @@ def main(config):
     X_train, X_valid, X_test, y_train, y_valid, y_test = get_train_valid_test(df_path=DF_PATH, valid_size=0.1)
 
     augmentor_Flip = A.Compose([
-         A.HorizontalFlip(p=0.5)
+        A.HorizontalFlip(p=0.5)
     ])
 
     train_loader = DataLoader(X_train, y_train,
