@@ -55,10 +55,6 @@ if __name__ == "__main__":
     pill_code = pd.DataFrame(data['품목일련번호'])
 
     for i,row in pill_code.iterrows():
-        # 1차적으로 100개
-        if i == 100:
-            break
-
         try:
             code = str(row['품목일련번호'])
             save_path = f'./img/{code}/'
