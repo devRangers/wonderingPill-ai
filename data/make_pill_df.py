@@ -15,9 +15,7 @@ def make_pill_df(image_dir):
                 file_path = dirname + "/" + filename
                 paths.append(file_path)
 
-                start_pos  = file_path.find("\\")
-                end_pos = file_path.rfind("/")
-                pill_code = file_path[start_pos+1:end_pos]
+                pill_code = filename.split(".")[0].split("_")[0]
                 codes.append(pill_code)
 
                 pill_name = data[data["품목일련번호"] == int(pill_code)]["품목명"]
@@ -66,7 +64,7 @@ if __name__ == "__main__":
     IMAGE_DIR = "../data/img"
 
     data_df = make_pill_df(IMAGE_DIR)
-    data_df.to_csv("pills_data.available_in_api.preprocess.csv", index=False, encoding="euc-kr")
+    data_df.to_csv("pills_data.available_in_api.preprocess.csv", index=False, encoding="utf-8")
 
     pill_dict = make_pill_label(data_df)
     with open("./label/pill_label.pkl", "wb") as tf:
