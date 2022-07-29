@@ -66,8 +66,8 @@ if __name__ == "__main__":
     data_df = make_pill_df(IMAGE_DIR)
     data_df.to_csv("pills_data.available_in_api.preprocess.csv", index=False, encoding="utf-8")
 
-    pill_dict = make_pill_label(data_df)
-    with open("./label/pill_label.pkl", "wb") as tf:
-        pickle.dump(pill_dict, tf)
+    # pill_dict = make_pill_label(data_df)
+    # with open("./label/pill_label.pkl", "wb") as tf:
+    #     pickle.dump(pill_dict, tf)
 
 
