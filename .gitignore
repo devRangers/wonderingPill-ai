@@ -3,6 +3,8 @@ venv
 img
 img2
 img_pentagon
+img_triangle
+img_square
 img_shape
 
 __pycache__
