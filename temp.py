@@ -16,8 +16,11 @@ def main(config):
         X_train, X_valid, X_test, y_train, y_valid, y_test = get_train_valid_test(
             df_path=DF_PATH, valid_size=0.1
         )
-        print(X_train.shape, X_valid.shape, X_test.shape)
-        print(y_train.shape, y_valid.shape, y_test.shape)
+
+    if config.shape_classifier is False:
+        raise Exception(
+            "You need to specify an what to train. (--shape_classifier or sth else)"
+        )
 
 
 if __name__ == "__main__":
