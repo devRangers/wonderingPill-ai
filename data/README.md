@@ -44,8 +44,17 @@ $ python img_augmentation.py
 $ python make_pill_df.py
 ```
 
-**변경할 것** : 사용할 데이터프레임이 변경됨 맞춰서 변경할 필요가 있음
+---
 
+#### 제형 분류 학습용 데이터셋 ####
+1. pills_data.available_in_api.shape.csv
+- api로 알약 정보를 받아올 수 있는 알약 이미지 데이터
+- 총 9가지의 제형 라벨 존재
+- 라벨 별 데이터 불균형 문제
+
+2. pills_data.shape.balanced.csv
+- 제형 분류에 굳이 api로 알약 정보를 받아올 수 있는 알약 이미지 데이터만 사용할 필요는 없음
+- 정보를 받아올 수 없어 사용하지 않았던 알약 이미지 데이터로부터 부족한 제형 알약 이미지를 보충 
 ---
 
 ## data 폴더 구성
