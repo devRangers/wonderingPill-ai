@@ -1,11 +1,16 @@
 import argparse
 
-mn_parser = argparse.ArgumentParser(description="mobilenet")
+p = argparse.ArgumentParser(description="mobilenet")
 
-mn_parser.add_argument("--batch_size", type=int, default=64)
-mn_parser.add_argument("--gpu_id", type=int, default=-1)
-mn_parser.add_argument("--n_classes", type=int, default=100)
-mn_parser.add_argument("--verbose", type=int, default=1)
-mn_parser.add_argument("--n_epochs", type=int, default=10)
+p.add_argument("--gpu_id", type=int, default=-1)
 
-mn_config = mn_parser.parse_args()
+p.add_argument("--shape_classifier", type=lambda s: s.lower() in ["true", "1"])
+
+p.add_argument("--batch_size", type=int, default=64)
+p.add_argument("--verbose", type=int, default=1)
+p.add_argument("--n_epochs", type=int, default=10)
+
+p.add_argument("--n_classes", type=int, default=9)
+
+
+mn_config = p.parse_args()

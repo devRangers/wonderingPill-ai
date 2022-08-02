@@ -1,4 +1,4 @@
-from pill_classification.data_loader import get_train_valid_test, DataLoader
+from dataloader.data_loader import get_train_valid_test, DataLoader
 from tensorflow.keras.applications.xception import preprocess_input
 from pill_classification.trainer import Trainer
 import albumentations as A
