@@ -51,12 +51,6 @@ def main(config):
         pre_func=preprocess_input,
     )
 
-    train_batch = next(iter(train_loader))[0]
-    valid_batch = next(iter(valid_loader))[0]
-    test_batch = next(iter(test_loader))[0]
-
-    print(train_batch.shape, valid_batch.shape, test_batch.shape)
-
 
 if __name__ == "__main__":
     config = mn_config
