@@ -26,7 +26,7 @@ def main(config):
         y_train,
         image_size=IMAGE_SIZE,
         batch_size=config.batch_size,
-        augmentor=None,  # use augementator later
+        augmentor=None, 
         shuffle=True,
         pre_func=preprocess_input,
     )

@@ -1,5 +1,7 @@
 venv
+venv_2
 
+# img data
 img
 img2
 img_pentagon
@@ -8,7 +10,15 @@ img_square
 img_diamond
 img_six
 img_shape
+img_color
 
 __pycache__
 
 .env
+
+# ocr 
+pill-text-recognition-a3e91afb350f.json
+
+# models
+pill_shape_classification_model
+service/models

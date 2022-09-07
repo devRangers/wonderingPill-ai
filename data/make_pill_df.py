@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import os
 import re
-import pickle
 
 
 def make_pill_df(image_dir):
@@ -49,16 +48,6 @@ def make_pill_df(image_dir):
     return data_df
 
 
-def make_pill_label(data_df): # FIX later
-    pill_dict = {}
-
-    label_num = len(data_df['shape_class'].value_counts())
-
-    for i in range(label_num):
-        pill_dict[i] = (data_df[data_df['shape_class']==i]['shape'].iloc[0])
-
-    return pill_dict
-
 
 if __name__ == "__main__":
     IMAGE_DIR = "../data/img"
@@ -66,8 +55,5 @@ if __name__ == "__main__":
     data_df = make_pill_df(IMAGE_DIR)
     data_df.to_csv("pills_data.available_in_api.preprocess.csv", index=False, encoding="utf-8")
 
-    # pill_dict = make_pill_label(data_df)
-    # with open("./label/pill_label.pkl", "wb") as tf:
-    #     pickle.dump(pill_dict, tf)
 
 

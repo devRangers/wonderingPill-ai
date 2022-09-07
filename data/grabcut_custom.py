@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 def grabcut_custom(preprocess_path):
-    src = cv2.imread(f'./img_six/{preprocess_path}.jpg')
+    src = cv2.imread(f'./data/img_color/{preprocess_path}.jpg')
 
     mask = np.zeros(src.shape[:2], np.uint8)  # 마스크
     bgdModel = np.zeros((1, 65), np.float64)  # 배경 모델
@@ -48,7 +48,7 @@ def grabcut_custom(preprocess_path):
             mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
             dst = src * mask2[:, :, np.newaxis]
             cv2.imshow('dst', dst)
-            cv2.imwrite(f'./img_six/{preprocess_path}_0.jpg', dst)
+            cv2.imwrite(f'./data/img_color/{preprocess_path}_0.jpg', dst)
 
         elif key == ord('q'):
             break
@@ -57,20 +57,20 @@ def grabcut_custom(preprocess_path):
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("./shape_csv/pills_data.shape_six.csv")
-    pill_code = pd.DataFrame(data['품목일련번호'])
+    data = pd.read_csv("./data/color_csv/available_in_api.origin.renewal_for_download.csv")
+    pill_code = pd.DataFrame(data['code'])
 
     for i,row in pill_code.iterrows():
         try:
-            code = str(row['품목일련번호'])
+            code = str(row['code'])
             preprocess_path = f'{code}/{code}'
 
             grabcut_custom(preprocess_path)
         except:
             pass
     
-    # # grabcut individualy
-    # pill_code = [201907893, 201907894, 201907895, 201907897]
+    # grabcut individualy
+    # pill_code = [197600345, 200400925, 200403808, 201107450, 201307930, 201403877, 201507425, 201700138, 201700539, 201701023, 201701138, 201701161, 201701380, 201701774, 201803063]
 
     # for code in pill_code:
     #     try:
