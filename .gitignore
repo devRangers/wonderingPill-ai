@@ -21,4 +21,5 @@ pill-text-recognition-a3e91afb350f.json
 
 # models
 pill_shape_classification_model
-service/models
+service/models/color*
+service/models/shape*

@@ -1,6 +1,6 @@
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense, Dropout, GlobalAveragePooling2D
-from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.applications import MobileNetV3Small
 
 class MobileNet():
 
@@ -9,7 +9,7 @@ class MobileNet():
         self.n_classes = n_classes
         self.weights = 'imagenet'
         self.input_tensor = Input(shape = self.input_shape)
-        self.base_model = MobileNetV2(include_top = False, weights = self.weights, input_tensor = self.input_tensor)
+        self.base_model = MobileNetV3Small(include_top = False, weights = self.weights, input_tensor = self.input_tensor)
 
     def forward(self):
         x = self.base_model.output

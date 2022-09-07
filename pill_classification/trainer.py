@@ -1,7 +1,7 @@
 import tensorflow as tf
 from pill_classification.models.mobilenet import MobileNet
 from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping, ModelCheckpoint, LearningRateScheduler
+from tensorflow.keras.callbacks import ReduceLROnPlateau, EarlyStopping
 
 class Trainer():
 
@@ -12,11 +12,13 @@ class Trainer():
             self.device = tf.test.gpu_device_name()
         else:
             self.device = "/CPU:0"
+        
+        self.model = MobileNet(n_classes= self.config.n_classes)
 
     def train(self, train_loader, valid_loader, X_train, X_valid):
         with tf.device(self.device):
             print("---학습 시작---")
-            mobile_net = MobileNet(n_classes = self.config.n_classes)
+            mobile_net = self.model
             model = mobile_net.forward()
             model.compile(optimizer=Adam(learning_rate=0.0001), loss="categorical_crossentropy", metrics=['accuracy'])
 
@@ -27,7 +29,7 @@ class Trainer():
                                 validation_data=valid_loader, validation_steps=X_valid.shape[0]//self.config.batch_size,
                                 callbacks=([rlr_cb, ely_cb]), verbose=self.config.verbose)
 
-        return model
+        return model, history
 
 
         
